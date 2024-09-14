@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": "./",
     "outDir": "./build",
-    "noUnusedParameters": false,
+    "noUnusedParameters": false
   },
   "exclude": ["./inertia/**/*", "node_modules", "build"]
 }

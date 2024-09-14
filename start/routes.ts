@@ -9,8 +9,9 @@
 
 const SamplesController = () => import('#controllers/samples_controller')
 const SessionController = () => import('#controllers/session_controller')
-import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
+
+import { middleware } from '#start/kernel'
 router.on('/').renderInertia('home', { version: 6 })
 router.on('/sample1').renderInertia('sample1', { version: 7 })
 router.on('/sample2').renderInertia('sample2', { version: 8 })

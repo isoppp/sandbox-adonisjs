@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react'
-import { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 
 export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   return (

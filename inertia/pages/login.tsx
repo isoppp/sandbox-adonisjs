@@ -1,9 +1,11 @@
-import { LoginSchema, loginValidator } from '#validators/login'
 import { vineResolver } from '@hookform/resolvers/vine'
 import { Head, router } from '@inertiajs/react'
 import { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import { Layout } from '~/components/Layout'
+
+import type { LoginSchema } from '#validators/login'
+import { loginValidator } from '#validators/login'
+import { Layout } from '~/components/layout'
 
 export default function Home({}) {
   const {
