@@ -1,8 +1,9 @@
 import { Head } from '@inertiajs/react'
+import { Layout } from '~/components/Layout'
 
 export default function Home(props: { version: number }) {
   return (
-    <>
+    <Layout>
       <Head title="Homepage" />
 
       <div className="container">
@@ -13,6 +14,6 @@ export default function Home(props: { version: number }) {
           <a href="https://docs.adonisjs.com/guides/inertia">AdonisJS documentation</a>.
         </span>
       </div>
-    </>
+    </Layout>
   )
 }
