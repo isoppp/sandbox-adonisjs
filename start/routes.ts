@@ -8,8 +8,30 @@
 */
 
 const SamplesController = () => import('#controllers/samples_controller')
+const SessionController = () => import('#controllers/session_controller')
+import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 router.on('/').renderInertia('home', { version: 6 })
 router.on('/sample1').renderInertia('sample1', { version: 7 })
 router.on('/sample2').renderInertia('sample2', { version: 8 })
+
+// w/controller
 router.resource('/samples', SamplesController)
+
+// auth
+router.resource('/sessions', SessionController).only(['store'])
+router.get('/login', async ({ inertia, response }) => {
+  console.log(response.getHeaders())
+  return inertia.render('login')
+})
+router
+  .get('/authenticated', async ({ auth, inertia }) => {
+    return inertia.render('authenticated', { email: auth.user?.email ?? null })
+  })
+  .use(middleware.auth())
+router
+  .get('logout', async ({ auth, response }) => {
+    await auth.use('web').logout()
+    return response.redirect('/login')
+  })
+  .use(middleware.auth())

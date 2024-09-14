@@ -9,6 +9,9 @@ export const Layout: FC<{ children: ReactNode }> = ({ children }) => {
         <Link href="/sample1">Sample1</Link>
         <Link href="/sample2">Sample2</Link>
         <Link href="/samples">Samples/Index</Link>
+        <Link href="/login">login</Link>
+        <Link href="/logout">logout</Link>
+        <Link href="/authenticated">authenticated</Link>
       </header>
 
       <div>{children}</div>
