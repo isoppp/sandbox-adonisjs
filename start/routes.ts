@@ -23,7 +23,6 @@ router.resource('/samples', SamplesController)
 router.resource('/sessions', SessionController).only(['store'])
 router
   .get('/login', async ({ inertia, response }) => {
-    console.log(response.getHeaders())
     return inertia.render('login')
   })
   .use(middleware.guest())
