@@ -22,6 +22,10 @@ export default class GuestMiddleware {
   ) {
     for (let guard of options.guards || [ctx.auth.defaultGuard]) {
       if (await ctx.auth.use(guard).check()) {
+        ctx.session.flash('flashMessage', {
+          type: 'error',
+          message: 'You are already logged-in',
+        })
         return ctx.response.redirect(this.redirectTo, true)
       }
     }

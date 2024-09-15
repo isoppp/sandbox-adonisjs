@@ -21,13 +21,15 @@ router.resource('/samples', SamplesController)
 
 // auth
 router.resource('/sessions', SessionController).only(['store'])
-router.get('/login', async ({ inertia, response }) => {
-  console.log(response.getHeaders())
-  return inertia.render('login')
-})
 router
-  .get('/authenticated', async ({ auth, inertia }) => {
-    return inertia.render('authenticated', { email: auth.user?.email ?? null })
+  .get('/login', async ({ inertia, response }) => {
+    console.log(response.getHeaders())
+    return inertia.render('login')
+  })
+  .use(middleware.guest())
+router
+  .get('/authenticated', async ({ inertia }) => {
+    return inertia.render('authenticated')
   })
   .use(middleware.auth())
 router
